@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "component"
+		},
+		{
+			"path": "template"
+		},
+		{
+			"path": "cache"
+		},
+		{
+			"path": "install"
+		},
+		{
+			"path": "database"
+		}
+	]
+}
