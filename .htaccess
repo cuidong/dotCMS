@@ -1,0 +1,30 @@
+<Files ~ "^.(htaccess|htpasswd)$">
+Deny from all
+</Files>
+Order deny,allow
+
+Options -Indexes
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !favicon.ico
+RewriteCond %{REQUEST_URI} \.(css|js|jpg|jpeg|gif|png|swf)$
+RewriteCond %{REQUEST_URI} !template
+RewriteRule ^(.*)$ template/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !favicon.ico
+RewriteRule ^(.*)-(\d*)-(\d*).html$ index.php?template=$1&id=$2&page=$3 [L]
+RewriteRule ^(.*)-(\d*).html$ index.php?template=$1&id=$2 [L]
+RewriteRule ^(.*)-(\d*)-(\d*)$ index.php?template=$1&id=$2&page=$3 [L]
+RewriteRule ^(.*)-(\d*)$ index.php?template=$1&page=$2 [L]
+RewriteRule ^(.*)-(\d*)-(\d*)/$ index.php?template=$1&id=$2&page=$3 [L]
+RewriteRule ^(.*)-(\d*)/$ index.php?template=$1&page=$2 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !favicon.ico
+RewriteRule ^(.*)$ index.php?template=$1 [L]
